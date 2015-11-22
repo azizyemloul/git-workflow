@@ -2,3 +2,11 @@
 Conceptualiser le fonctionnement d'une équipe de collaborateurs travaillant en équipe sur un projet de développement.
 * La notion de workflow
 Git définit en soi
+https://www.atlassian.com/git/tutorials/comparing-workflows
+http://documentup.com/skwp/git-workflows-book
+http://scottchacon.com/2011/08/31/github-flow.html
+https://guides.github.com/introduction/flow/index.html
+http://www.toptal.com/git/git-workflows-for-pros-a-good-git-guide
+https://sandofsky.com/blog/git-workflow.html
+https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
+http://nvie.com/posts/a-successful-git-branching-model/
