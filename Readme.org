@@ -18,14 +18,14 @@ git clone adresse_du_depot nom_local
 #+END_SRC
 
 #+BEGIN_HTML
-<img src="./img/collab0.png" width=150 height=150 />
+<center><img src="./img/collab0.png" width=200 height=200 /></center>
 #+END_HTML
 
 À chaque fois  qu'il l'estime nécessaire, un collaborateur  met à jour
 le dépôt central en envoyant l'état d'avancement de son travail.
 
 #+BEGIN_HTML
-<img src="./img/bob_push.png" width=150 height=150 />
+<center><img src="./img/bob_push.png" width=200 height=200 /></center>
 #+END_HTML
 
 #+BEGIN_SRC sh
@@ -39,11 +39,10 @@ avancement. L'état  du dépôt  n'est plus  le même  que celui  à partir
 duquel le travail avait commencé.
 
 #+BEGIN_HTML
-<img src="./img/mary_failed_push.png" width=150 height=150 />
+<center><img src="./img/mary_failed_push.png" width=200 height=200 /></center>
 #+END_HTML
 
-
-Son ~push~ échouera alors, avec un message d'erreur semblable :
+Le ~push~ échouera alors, avec un message d'erreur semblable au suivant :
 #+BEGIN_EXAMPLE
  ! [rejected]        master -> master (fetch first)
 error: impossible de pousser des références vers 'adresse_du_depot'
