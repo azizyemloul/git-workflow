@@ -1,0 +1,18 @@
+#+BEGIN_SRC sh
+$ git status
+Sur la branche master
+Votre branche et 'origin/master' ont divergé,
+et ont 1 et 1 commit différent chacune respectivement.
+  (utilisez "git pull" pour fusionner la branche distante dans la vôtre)
+
+Vous avez des chemins non fusionnés.
+  (réglez les conflits puis lancez "git commit")
+
+Chemins non fusionnés :
+  (utilisez "git add <fichier>..." pour marquer comme résolu)
+
+        modifié des deux côtés :  README.md
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+$
+#+END_SRC

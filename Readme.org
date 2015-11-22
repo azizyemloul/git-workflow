@@ -18,14 +18,14 @@ git clone adresse_du_depot nom_local
 #+END_SRC
 
 #+BEGIN_HTML
-<center><img src="./img/collab0.png" width=200 height=200 /></center>
+<img src="./img/collab0.png" width=200 height=200 />
 #+END_HTML
 
 À chaque fois  qu'il l'estime nécessaire, un collaborateur  met à jour
 le dépôt central en envoyant l'état d'avancement de son travail.
 
 #+BEGIN_HTML
-<center><img src="./img/bob_push.png" width=200 height=200 /></center>
+<img src="./img/bob_push.png" width=200 height=200 />
 #+END_HTML
 
 #+BEGIN_SRC sh
@@ -34,16 +34,16 @@ git commit -m "Message descriptif des ajouts"
 git push
 #+END_SRC
 
-Il   se  peut   qu'un  autre   collaborateur  ait   déjà  envoyé   son
-avancement. L'état  du dépôt  n'est plus  le même  que celui  à partir
-duquel le travail avait commencé.
+Si un autre collaborateur souhaite  à son tour envoyer l'avancement de
+son travail, l'état du dépôt central aura changé.
 
 #+BEGIN_HTML
-<center><img src="./img/mary_failed_push.png" width=200 height=200 /></center>
+<img src="./img/mary_failed_push.png" width=200 height=200 />
 #+END_HTML
 
 Le ~push~ échouera alors, avec un message d'erreur semblable au suivant :
 #+BEGIN_EXAMPLE
+$ git push
  ! [rejected]        master -> master (fetch first)
 error: impossible de pousser des références vers 'adresse_du_depot'
 astuce: Les mises à jour ont été rejetées car la branche distante contient du travail que
@@ -51,24 +51,75 @@ astuce: vous n'avez pas en local. Ceci est généralement causé par un autre d�
 astuce: vers la même référence. Vous pourriez intégrer d'abord les changements distants
 astuce: (par exemple 'git pull ...') avant de pousser à nouveau.
 astuce: Voir la 'Note à propos des avances rapides' dans 'git push --help' pour plus d'information.
+$
 #+END_EXAMPLE
 
-Il y'a différentes manières
+~Git~   offre    différentes   possibilités   pour    résoudre   cette
+situation.  Celle  présentée  ci-dessous   offre  l'avantage  de  nous
+familiariser avec le logiciel.
 
-Il  devra   récupérer  (~fetch~)  la  copie   actualisée  du  serveur,
-l'intégrer à son travail (~merge~) avant de renvoyer son avancement.
-
+La  commande   ~git  fetch~  permet   de  récupérer  le   nouvel  état
+d'avancement  du  dépôt  et  le mettre  dans  un  emplacement  virtuel
+~origin/master~ sans écraser le travail effectué par le collaborateur.
 
 #+BEGIN_SRC sh
-git pull
-git
+$ git fetch
+remote: Counting objects: 5, donne.
+remote: Compressing objects: 100% (2/2), donne.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), donne.
+Depuis adresse_du_depot
+   7f934c9..a25526d  master     -> origin/master
+$
+#+END_SRC
+
+La  commande  ~git  merge  origin/master~ rassemblera  la  version  du
+serveur avec le travail déjà  effectué par le collaborateur en faisant
+ressortir les conflits qu'il pourra résoudre à son aise.
+
+#+BEGIN_SRC sh
+$ git merge origin/master
+Fusion automatique de README.md
+CONFLIT (contenu) : Conflit de fusion dans README.md
+La fusion automatique a échoué ; réglez les conflits et validez le résultat.
+$
+#+END_SRC
+
+Les conflits, ici contenus dans  le fichier ~README.md~ pour l'exemple
+seront clairement délimités par à ~Git~ grâce à des marqueurs clairs.
+
+#+BEGIN_EXAMPLE
+<<<<<<< HEAD
+La version
+locale
+=======
+La version contenue dans
+le dépôt central
+>>>>>>> origin/master
+#+END_EXAMPLE
+
+Le collaborateur n'aura qu'à choisir  quelle portion du code garder et
+celle qu'il désactivera en la  commentant avant d'envoyer sur le dépôt
+central.  Il   devra  avant  cela  également   enlever  les  marqueurs
+introduits par ~Git~ pour indiquer les conflits :
+
+#+BEGIN_EXAMPLE
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
+#+END_EXAMPLE
+
+#+BEGIN_SRC sh
+$ git commit -m "Merge de conflits avec la version du dépôt central"
+$ git push
 #+END_SRC
 
 
 
 
+Illustrations tirée depuis [[https://www.atlassian.com/git/tutorials/comparing-workflows][ce site]]
 
-- https://www.atlassian.com/git/tutorials/comparing-workflows
+* Autres liens
 - http://documentup.com/skwp/git-workflows-book
 - http://scottchacon.com/2011/08/31/github-flow.html
 - https://guides.github.com/introduction/flow/index.html
