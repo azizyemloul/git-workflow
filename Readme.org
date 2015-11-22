@@ -17,8 +17,10 @@ central.
 git clone adresse_du_depot nom_local
 #+END_SRC
 
-#+ATTR_HTML: :width 50 :height 50
-[[./img/collab0.png]]
+#+BEGIN_HTML
+<img src="./img/collab0.png" width=50 height=50 />
+#+END_HTML
+
 
 
 À chaque fois  qu'il l'estime nécessaire, un collaborateur  met à jour
