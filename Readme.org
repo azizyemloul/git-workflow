@@ -30,7 +30,7 @@ git commit -m "Message descriptif des ajouts"
 git push
 #+END_SRC
 
-[[img/collab1.svg]]
+[[./img/collab1.svg]]
 
 Il   se  peut   qu'un  autre   collaborateur  ait   déjà  envoyé   son
 avancement. L'état  du dépôt  n'est plus  le même  que celui  à partir
