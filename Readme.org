@@ -17,7 +17,7 @@ central.
 git clone adresse_du_depot nom_local
 #+END_SRC
 
-#+ATTR_HTML: :width 200 :height 100
+#+ATTR_HTML: :width 50 :height 50
 [[./img/collab0.png]]
 
 
