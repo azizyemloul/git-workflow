@@ -18,16 +18,15 @@ git clone adresse_du_depot nom_local
 #+END_SRC
 
 #+BEGIN_HTML
-<img src="./img/collab0.png" width=50 height=50 />
+<img src="./img/collab0.png" width=150 height=150 />
 #+END_HTML
-
-
 
 À chaque fois  qu'il l'estime nécessaire, un collaborateur  met à jour
 le dépôt central en envoyant l'état d'avancement de son travail.
 
-#+ATTR_HTML: :width 200 :height 100
-[[./img/bob_push.png]]
+#+BEGIN_HTML
+<img src="./img/bob_push.png" width=150 height=150 />
+#+END_HTML
 
 #+BEGIN_SRC sh
 git add .
@@ -35,13 +34,14 @@ git commit -m "Message descriptif des ajouts"
 git push
 #+END_SRC
 
-
 Il   se  peut   qu'un  autre   collaborateur  ait   déjà  envoyé   son
 avancement. L'état  du dépôt  n'est plus  le même  que celui  à partir
 duquel le travail avait commencé.
 
-#+ATTR_HTML: :width 200 :height 100
-[[./img/mary_failed_push.png]]
+#+BEGIN_HTML
+<img src="./img/mary_failed_push.png" width=150 height=150 />
+#+END_HTML
+
 
 Son ~push~ échouera alors, avec un message d'erreur semblable :
 #+BEGIN_EXAMPLE
