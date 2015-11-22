@@ -85,8 +85,8 @@ La fusion automatique a échoué ; réglez les conflits et validez le résultat.
 $
 #+END_SRC
 
-Les conflits, ici contenus dans  le fichier ~README.md~ pour l'exemple
-seront clairement délimités par à ~Git~ grâce à des marqueurs clairs.
+Les conflits, ici contenus dans le fichier ~README.md~ pour l'exemple,
+seront clairement délimités par ~Git~ grâce à des marqueurs clairs.
 
 #+BEGIN_EXAMPLE
 <<<<<<< HEAD
@@ -113,8 +113,6 @@ introduits par ~Git~ pour indiquer les conflits :
 $ git commit -m "Merge de conflits avec la version du dépôt central"
 $ git push
 #+END_SRC
-
-
 
 
 Illustrations tirée depuis [[https://www.atlassian.com/git/tutorials/comparing-workflows][ce site]]
