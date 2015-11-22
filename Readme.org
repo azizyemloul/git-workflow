@@ -1,6 +1,68 @@
 * Objectif
-Conceptualiser le fonctionnement d'une équipe de collaborateurs travaillant en équipe sur un projet de développement.
+Fonctionnement  d'une  équipe  de collaborateurs  travaillant  sur  un
+projet de développement.
 * La notion de workflow
+Une dépôt ~git~ centralise  la collaboration de plusieurs intervenants
+sur un projet de développement.
+
+La prise en main de ce logiciel  n'est pas intuitive. La mise en place
+d'un schéma de  fonctionnement de base permettra  de l'exploiter avant
+de le maîtriser.
+
+* Le dépôt
+Chaque collaborateur  héberge sur  son ordinateur  une copie  du dépôt
+central.
+
+#+BEGIN_SRC sh
+git clone adresse_du_depot nom_local
+#+END_SRC
+
+[[img/collab0.svg]]
+
+
+À chaque fois  qu'il l'estime nécessaire, un collaborateur  met à jour
+le dépôt central en envoyant l'état d'avancement de son travail.
+
+
+#+BEGIN_SRC sh
+git add .
+git commit -m "Message descriptif des ajouts"
+git push
+#+END_SRC
+
+[[img/collab1.svg]]
+
+Il   se  peut   qu'un  autre   collaborateur  ait   déjà  envoyé   son
+avancement. L'état  du dépôt  n'est plus  le même  que celui  à partir
+duquel le travail avait commencé.
+
+
+
+Son ~push~ échouera alors, avec un message d'erreur semblable :
+#+BEGIN_EXAMPLE
+ ! [rejected]        master -> master (fetch first)
+error: impossible de pousser des références vers 'adresse_du_depot'
+astuce: Les mises à jour ont été rejetées car la branche distante contient du travail que
+astuce: vous n'avez pas en local. Ceci est généralement causé par un autre dépôt poussé
+astuce: vers la même référence. Vous pourriez intégrer d'abord les changements distants
+astuce: (par exemple 'git pull ...') avant de pousser à nouveau.
+astuce: Voir la 'Note à propos des avances rapides' dans 'git push --help' pour plus d'information.
+#+END_EXAMPLE
+
+Il y'a différentes manières
+
+Il  devra   récupérer  (~fetch~)  la  copie   actualisée  du  serveur,
+l'intégrer à son travail (~merge~) avant de renvoyer son avancement.
+
+
+#+BEGIN_SRC sh
+git pull
+git
+#+END_SRC
+
+
+
+
 Git définit en soi
 https://www.atlassian.com/git/tutorials/comparing-workflows
 http://documentup.com/skwp/git-workflows-book
@@ -10,3 +72,28 @@ http://www.toptal.com/git/git-workflows-for-pros-a-good-git-guide
 https://sandofsky.com/blog/git-workflow.html
 https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
 http://nvie.com/posts/a-successful-git-branching-model/
+* organisation
+** dimensionnement
+** spécialisation
+** pré étude ==> proposition comerciale
+*** coûts en ressources
+**** matériel / humain
+***** temps
+****** proposition commerciale
+****** comment on voit l'entrreprise
+****** son périmètre
+****** les fonctions proposées
+****** quels modules on va installer
+** proposition
+** retours sur les besoins
+** proposition fonctionalités
+** combien de temps
+** tarification
+* Approche client
+* TCO <2015-11-22 dim. 15:21>
+- packs
+  - pack tpe
+  - pack restaurant
+  - pack pos
+- gestion soustraitance
+- open educate
