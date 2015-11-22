@@ -17,7 +17,7 @@ central.
 git clone adresse_du_depot nom_local
 #+END_SRC
 
-[[img/collab0.svg]]
+[[./img/collab0.png]]
 
 
 À chaque fois  qu'il l'estime nécessaire, un collaborateur  met à jour
@@ -30,7 +30,7 @@ git commit -m "Message descriptif des ajouts"
 git push
 #+END_SRC
 
-[[./img/collab1.svg]]
+[[./img/collab1.png]]
 
 Il   se  peut   qu'un  autre   collaborateur  ait   déjà  envoyé   son
 avancement. L'état  du dépôt  n'est plus  le même  que celui  à partir
