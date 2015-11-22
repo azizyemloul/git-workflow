@@ -1,0 +1,4 @@
+* Objectif
+Conceptualiser le fonctionnement d'une équipe de collaborateurs travaillant en équipe sur un projet de développement.
+* La notion de workflow
+Git définit en soi
