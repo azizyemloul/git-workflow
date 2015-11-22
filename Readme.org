@@ -17,12 +17,15 @@ central.
 git clone adresse_du_depot nom_local
 #+END_SRC
 
+#+ATTR_HTML: :width 200 :height 100
 [[./img/collab0.png]]
 
 
 À chaque fois  qu'il l'estime nécessaire, un collaborateur  met à jour
 le dépôt central en envoyant l'état d'avancement de son travail.
 
+#+ATTR_HTML: :width 200 :height 100
+[[./img/bob_push.png]]
 
 #+BEGIN_SRC sh
 git add .
@@ -30,13 +33,13 @@ git commit -m "Message descriptif des ajouts"
 git push
 #+END_SRC
 
-[[./img/collab1.png]]
 
 Il   se  peut   qu'un  autre   collaborateur  ait   déjà  envoyé   son
 avancement. L'état  du dépôt  n'est plus  le même  que celui  à partir
 duquel le travail avait commencé.
 
-
+#+ATTR_HTML: :width 200 :height 100
+[[./img/mary_failed_push.png]]
 
 Son ~push~ échouera alors, avec un message d'erreur semblable :
 #+BEGIN_EXAMPLE
@@ -63,37 +66,12 @@ git
 
 
 
-Git définit en soi
-https://www.atlassian.com/git/tutorials/comparing-workflows
-http://documentup.com/skwp/git-workflows-book
-http://scottchacon.com/2011/08/31/github-flow.html
-https://guides.github.com/introduction/flow/index.html
-http://www.toptal.com/git/git-workflows-for-pros-a-good-git-guide
-https://sandofsky.com/blog/git-workflow.html
-https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
-http://nvie.com/posts/a-successful-git-branching-model/
-* organisation
-** dimensionnement
-** spécialisation
-** pré étude ==> proposition comerciale
-*** coûts en ressources
-**** matériel / humain
-***** temps
-****** proposition commerciale
-****** comment on voit l'entrreprise
-****** son périmètre
-****** les fonctions proposées
-****** quels modules on va installer
-** proposition
-** retours sur les besoins
-** proposition fonctionalités
-** combien de temps
-** tarification
-* Approche client
-* TCO <2015-11-22 dim. 15:21>
-- packs
-  - pack tpe
-  - pack restaurant
-  - pack pos
-- gestion soustraitance
-- open educate
+
+- https://www.atlassian.com/git/tutorials/comparing-workflows
+- http://documentup.com/skwp/git-workflows-book
+- http://scottchacon.com/2011/08/31/github-flow.html
+- https://guides.github.com/introduction/flow/index.html
+- http://www.toptal.com/git/git-workflows-for-pros-a-good-git-guide
+- https://sandofsky.com/blog/git-workflow.html
+- https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
+- http://nvie.com/posts/a-successful-git-branching-model/
