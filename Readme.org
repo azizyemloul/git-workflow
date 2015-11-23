@@ -4,7 +4,7 @@
 #+DESCRIPTION:
 #+LANGUAGE:  fr
 #+HTML_DOCTYPE: html5
-#+OPTIONS:   H:3 num:nil toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   H:3 num:nil toc:t \n:t @:t ::t |:t ^:{} -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:t p:t todo:t stat:t pri:nil tags:t
 #+OPTIONS:   html5-fancy:t html-postamble:nil html-preamble:nil
 #+OPTIONS:   timestamp:nil author:nil creator:nil email:nil c:t e:t inline:t
@@ -192,7 +192,7 @@ Depuis localhost:~/project
 Si la commande ~git fetch~ ne  renvoie pas de sortie cela signifie que
 l'espace de  travail du  développeur est  à jour  avec celui  du dépôt
 central. En d'autres termes, le dernier commit envoyé au dépôt central
-est le sien.
+a été le sien.
 
 Si de  nouveaux commits ont été  ajouté au dépôt central,  la commande
 ~git fetch~  en rend compte.  Il faudra alors au  développeur examiner
@@ -225,9 +225,8 @@ que  l'état du  dépôt central  ait  changé grâce  au travail  d'autres
 collaborateurs du projet.
 
 Si la commande ~git push~ échoue, il faudra au développeur tirer à lui
-la version du  dépôt central, soigner les conflits,  créer une nouveau
-commit, avant de renvoyer son travail au serveur.
-
+la version  du dépôt central,  soigner les conflits, créer  un nouveau
+commit de réconciliation, avant de renvoyer son travail au serveur.
 #+BEGIN_EXAMPLE
 # dernière vérification avant l'envoi
 $ git fetch
@@ -237,8 +236,6 @@ $ git add .
 $ git commit -m "Etat de fin de journée de travail"
 $ git push
 #+END_EXAMPLE
-
-
 * Autres liens
 - http://documentup.com/skwp/git-workflows-book
 - http://scottchacon.com/2011/08/31/github-flow.html
