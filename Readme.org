@@ -133,12 +133,12 @@ un  système de  gestion  de  version centralisé.  Cette  aspect de  sa
 conception lui donne une grande flexibilité.
 
 La gestion  des conflits  comme nous avons  vu précédemment  peut être
-conduite selon plusieurs stratégies. [[alarebase.org][À la rebase]] par exemple.
+conduite selon plusieurs stratégies. [[./alarebase.org][À la rebase]] par exemple.
 
 Il existe néanmoins une autre  stratégie qui est considéré aujourd'hui
 comme une spécificité grâce à  laquelle ~Git~ surpasse ses concurrents
 dans le domaine de la gestion centralisée du travail collaboratif, les
-branches.
+~branches~.
 
 C'est cette spécificité que nous  souhaitons exploiter de manière plus
 poussée et qui  donnera lieu à de nouveaux documents  dans le cadre de

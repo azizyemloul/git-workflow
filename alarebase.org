@@ -1,23 +1,12 @@
-* Consécutivement à un git fetch, merge
-#+BEGIN_EXAMPLE
-$ git status
-Sur la branche master
-Votre branche et 'origin/master' ont divergé,
-et ont 1 et 1 commit différent chacune respectivement.
-  (utilisez "git pull" pour fusionner la branche distante dans la vôtre)
+* Rebaser l'espace de travail
+La commande ~git pull --rebase~ permet de construire  un nouveau commit
+en prenant comme base l'état du dépôt central en cas de conflit.
 
-Vous avez des chemins non fusionnés.
-  (réglez les conflits puis lancez "git commit")
+Par opposition, la séquence ~git fetch~, ~git merge origin/master~ par
+exemple se  base sur  le commit  contenu dans  l'espace du  travail du
+collaborateur.
 
-Chemins non fusionnés :
-  (utilisez "git add <fichier>..." pour marquer comme résolu)
 
-        modifié des deux côtés :  README.md
-
-aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
-$
-#+END_EXAMPLE
-* À la mode ~rebase~
 #+BEGIN_EXAMPLE
 $ git pull --rebase
 git@localhost's password:
@@ -44,12 +33,9 @@ Si vous préférez sauter ce patch, lancez "git rebase --skip" à la place.
 Pour extraire la branche d'origine et stopper le rebasage, lancez "git rebase --abort".
 $
 #+END_EXAMPLE
-Contrairement à la séquence ~git fetch~, ~git merge origin/master~, la
-commande ~git pull  --rebase~ donne la priorité à la  version du dépôt
-central par-dessus votre copie locale.
-
-Cela se  voit dans  la manière  dont ~Git~ arrange  la fusion  dans le
-fichier portant conflit entre les deux versions.
+Cette distinction  entre les deux  stratégies se voit dans  la manière
+dont ~Git~ arrange la fusion dans le fichier portant conflit entre les
+deux versions.
 #+BEGIN_EXAMPLE
 <<<<<<< HEAD
 version du dépôt
@@ -61,6 +47,7 @@ version locale
 Une fois les marqueurs supprimé et le conflit résolu, la commande ~git
 rebase --continue~ nous donne la sortie suivante :
 #+BEGIN_EXAMPLE
+$ git add .
 $ git rebase --continue
 README.md: needs merge
 Vous devez éditer tous les conflits de fusion et
@@ -111,4 +98,25 @@ astuce: Les mises à jour ont été rejetées car la pointe de la branche couran
 astuce: son homologue distant. Extrayez cette branche et Intégrez les changements distants
 astuce: (par exemple 'git pull ...') avant de pousser à nouveau.
 astuce: Voir la 'Note à propos des avances rapides' dans 'git push --help' pour plus d'information.
+#+END_EXAMPLE
+
+
+* Consécutivement à un git fetch, merge
+#+BEGIN_EXAMPLE
+$ git status
+Sur la branche master
+Votre branche et 'origin/master' ont divergé,
+et ont 1 et 1 commit différent chacune respectivement.
+  (utilisez "git pull" pour fusionner la branche distante dans la vôtre)
+
+Vous avez des chemins non fusionnés.
+  (réglez les conflits puis lancez "git commit")
+
+Chemins non fusionnés :
+  (utilisez "git add <fichier>..." pour marquer comme résolu)
+
+        modifié des deux côtés :  README.md
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+$
 #+END_EXAMPLE
