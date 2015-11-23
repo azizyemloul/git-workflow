@@ -1,0 +1,20 @@
+* Définition des aliases pour git
+S'assurer d'abord que le fichier de configuration de votre shell bash contient l'expression suivante :
+#+BEGIN_SRC sh
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+#+END_SRC
+
+** Contenu de ~/.bash_aliases
+#+BEGIN_SRC sh
+alias gia='git add .'
+alias gib='git branch'
+alias gic='git checkout'
+alias gif='git fetch'
+alias gig='git merge'
+alias gil='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short --color'
+alias gill='git pull'
+alias gim='git commit'
+alias gip='git push'
+alias gis='git status'
+#+END_SRC

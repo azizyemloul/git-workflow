@@ -12,6 +12,29 @@
 * Objectif
 Formaliser   le   fonctionnement   d'une  équipe   de   collaborateurs
 travaillant sur un projet de développement.
+* Le scénario type
+Ci-dessous  le  scénario type  d'un  développeur  sur une  journée  de
+travail. Ce déroulé sera expliqué en détail à la fin de ce document.
+#+BEGIN_EXAMPLE
+$ git fetch
+$ git merge origin/master
+# résolution des conflits
+$ git add .
+$ git commit -m "Etat du jour 1"
+# développement - ajouts - modification
+$ git add .
+$ git commit -m "Etat du jour 2"
+# développement - ajouts - modification
+$ git add .
+$ git commit -m "Etat du jour 3"
+# dernière vérification avant l'envoi
+$ git fetch
+$ git merge origin/master
+# résolution des conflits
+$ git add .
+$ git commit -m "Etat de fin de journée de travail"
+$ git push
+#+END_EXAMPLE
 * La notion de workflow
 Une dépôt ~Git~ centralise le travail de plusieurs intervenants sur un
 projet de développement.
@@ -143,6 +166,78 @@ dans le domaine de la gestion centralisée du travail collaboratif, les
 C'est cette spécificité que nous  souhaitons exploiter de manière plus
 poussée et qui  donnera lieu à de nouveaux documents  dans le cadre de
 ce projet de formalisation d'un workflow.
+
+* Explication du scénario type
+** Première phase
+La première action  du développeur au début de sa  journée et avant de
+toucher à  son code est  de tirer  à lui la  version du dépôt  afin de
+s'assurer que ses  ajouts se feront à  partir de la version  la plus à
+jour.
+#+BEGIN_EXAMPLE
+$ git fetch
+# ....
+#+END_EXAMPLE
+La  sortie  de  ~git  fetch~  indiquera  clairement  si  de  nouvelles
+modifications ont été apportées au dépôt central
+#+BEGIN_EXAMPLE
+$ git fetch
+git@localhost's password:
+remote: Counting objects: 6, donne.
+remote: Compressing objects: 100% (3/3), donne.
+remote: Total 3 (delta 1), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), donne.
+Depuis localhost:~/project
+   07d5585..0ba7c21  master     -> origin/master
+#+END_EXAMPLE
+Si la commande ~git fetch~ ne  renvoie pas de sortie cela signifie que
+l'espace de  travail du  développeur est  à jour  avec celui  du dépôt
+central. En d'autres termes, le dernier commit envoyé au dépôt central
+est le sien.
+
+Si de  nouveaux commits ont été  ajouté au dépôt central,  la commande
+~git fetch~  en rend compte.  Il faudra alors au  développeur examiner
+les conflits  et les inclure  avec son travail avant  d'enregistrer le
+nouvel état obtenu dans un nouveau commit.
+#+BEGIN_EXAMPLE
+$ git merge origin/master
+# résolution des conflits
+$ git add .
+$ git commit -m "Merge du dernier état du dépôt"
+#+END_EXAMPLE
+** Deuxième phase
+La journée de  travail sera une succession d'ajouts et  de commits que
+le  développeur  excutera   dans  son  espace  de   travail,  sur  son
+ordinateur.
+#+BEGIN_EXAMPLE
+# développement - ajouts - modification
+$ git add .
+$ git commit -m "Etat du jour 2"
+# développement - ajouts - modification
+$ git add .
+$ git commit -m "Etat du jour 3"
+#+END_EXAMPLE
+** Troisième et dernière phase
+À  la fin  de journée  de travail  le développeur  devra avoir  envoyé
+l'état d'avancement de son travail du jour vers le dépôt central.
+
+L'étape est  tout aussi critique qu'en  première phase car il  se peut
+que  l'état du  dépôt central  ait  changé grâce  au travail  d'autres
+collaborateurs du projet.
+
+Si la commande ~git push~ échoue, il faudra au développeur tirer à lui
+la version du  dépôt central, soigner les conflits,  créer une nouveau
+commit, avant de renvoyer son travail au serveur.
+
+#+BEGIN_EXAMPLE
+# dernière vérification avant l'envoi
+$ git fetch
+$ git merge origin/master
+# résolution des conflits
+$ git add .
+$ git commit -m "Etat de fin de journée de travail"
+$ git push
+#+END_EXAMPLE
+
 
 * Autres liens
 - http://documentup.com/skwp/git-workflows-book
