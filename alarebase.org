@@ -1,0 +1,114 @@
+* Consécutivement à un git fetch, merge
+#+BEGIN_EXAMPLE
+$ git status
+Sur la branche master
+Votre branche et 'origin/master' ont divergé,
+et ont 1 et 1 commit différent chacune respectivement.
+  (utilisez "git pull" pour fusionner la branche distante dans la vôtre)
+
+Vous avez des chemins non fusionnés.
+  (réglez les conflits puis lancez "git commit")
+
+Chemins non fusionnés :
+  (utilisez "git add <fichier>..." pour marquer comme résolu)
+
+        modifié des deux côtés :  README.md
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+$
+#+END_EXAMPLE
+* À la mode ~rebase~
+#+BEGIN_EXAMPLE
+$ git pull --rebase
+git@localhost's password:
+remote: Counting objects: 5, donne.
+remote: Compressing objects: 100% (2/2), donne.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), donne.
+Depuis localhost:~/project
+   4c89266..525612c  master     -> origin/master
+Premièrement, rembobinons head pour rejouer votre travail par-dessus...
+Application : aziz2
+Utilisation de l'information de l'index pour reconstruire un arbre de base...
+M       README.md
+Retour à un patch de la base et fusion à 3 points...
+Fusion automatique de README.md
+CONFLIT (contenu) : Conflit de fusion dans README.md
+Échec d'intégration des modifications.
+Le patch a échoué à 0001 aziz2
+La copie du patch qui a échoué se trouve dans :
+   /home/aziz/nouveau/project/.git/rebase-apply/patch
+
+Lorsque vous aurez résolu ce problème, lancez "git rebase --continue".
+Si vous préférez sauter ce patch, lancez "git rebase --skip" à la place.
+Pour extraire la branche d'origine et stopper le rebasage, lancez "git rebase --abort".
+$
+#+END_EXAMPLE
+Contrairement à la séquence ~git fetch~, ~git merge origin/master~, la
+commande ~git pull  --rebase~ donne la priorité à la  version du dépôt
+central par-dessus votre copie locale.
+
+Cela se  voit dans  la manière  dont ~Git~ arrange  la fusion  dans le
+fichier portant conflit entre les deux versions.
+#+BEGIN_EXAMPLE
+<<<<<<< HEAD
+version du dépôt
+central
+=======
+version locale
+>>>>>>> aziz2
+#+END_EXAMPLE
+Une fois les marqueurs supprimé et le conflit résolu, la commande ~git
+rebase --continue~ nous donne la sortie suivante :
+#+BEGIN_EXAMPLE
+$ git rebase --continue
+README.md: needs merge
+Vous devez éditer tous les conflits de fusion et
+les marquer comme résolus avec git add
+#+END_EXAMPLE
+Mais ici nous  avons oublier d'émettre la commande ~git  add .~. ~Git~
+se plaint donc car il n'a pas enregistré notre intervention.
+#+BEGIN_EXAMPLE
+$ git status
+rebasage en cours ; sur 525612c
+Vous êtes en train de rebaser la branche 'master' sur '525612c'.
+  (réglez les conflits puis lancez "git rebase --continue")
+  (utilisez "git rebase --skip" pour sauter ce patch)
+  (utilisez "git rebase --abort" pour extraire la branche d'origine)
+
+Chemins non fusionnés :
+  (utilisez "git reset HEAD <fichier>..." pour désindexer)
+  (utilisez "git add <fichier>..." pour marquer comme résolu)
+
+        modifié des deux côtés :  README.md
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+$ git add .
+$ git status
+rebasage en cours ; sur 525612c
+Vous êtes en train de rebaser la branche 'master' sur '525612c'.
+  (tous les conflits sont réglés : lancez "git rebase --continue")
+
+Modifications qui seront validées :
+  (utilisez "git reset HEAD <fichier>..." pour désindexer)
+
+        modified:   README.md
+#+END_EXAMPLE
+Nous en sommes quitte avec un  ~git rebase --skip~ car avant cela ~git
+branch~ donnait ce résultat :
+#+BEGIN_EXAMPLE
+ * (aucune branche, rebasage de master)
+   master
+#+END_EXAMPLE
+Et le ~git push~ refusait de passer.
+#+BEGIN_EXAMPLE
+$ gip
+git@localhost's password:
+To git@localhost:~/project.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: impossible de pousser des références vers 'git@localhost:~/project.git'
+astuce: Les mises à jour ont été rejetées car la pointe de la branche courante est derrière
+astuce: son homologue distant. Extrayez cette branche et Intégrez les changements distants
+astuce: (par exemple 'git pull ...') avant de pousser à nouveau.
+astuce: Voir la 'Note à propos des avances rapides' dans 'git push --help' pour plus d'information.
+#+END_EXAMPLE

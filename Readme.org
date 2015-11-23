@@ -1,17 +1,28 @@
+#+AUTHOR:    Aziz Yemloul
+#+EMAIL:     azizyemloul@gmail.com
+#+CREATOR:
+#+DESCRIPTION:
+#+LANGUAGE:  fr
+#+HTML_DOCTYPE: html5
+#+OPTIONS:   H:3 num:nil toc:t \n:nil @:t ::t |:t ^:{} -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:t p:t todo:t stat:t pri:nil tags:t
+#+OPTIONS:   html5-fancy:t html-postamble:nil html-preamble:nil
+#+OPTIONS:   timestamp:nil author:nil creator:nil email:nil c:t e:t inline:t
+#+TITLE:
 * Objectif
-Fonctionnement  d'une  équipe  de collaborateurs  travaillant  sur  un
-projet de développement.
+Formaliser   le   fonctionnement   d'une  équipe   de   collaborateurs
+travaillant sur un projet de développement.
 * La notion de workflow
-Une dépôt ~git~ centralise  la collaboration de plusieurs intervenants
-sur un projet de développement.
+Une dépôt ~Git~ centralise le travail de plusieurs intervenants sur un
+projet de développement.
 
 La prise en main de ce logiciel  n'est pas intuitive. La mise en place
 d'un schéma de  fonctionnement de base permettra  de l'exploiter avant
 de le maîtriser.
 
 * Le dépôt
-Chaque collaborateur  héberge sur  son ordinateur  une copie  du dépôt
-central.
+Chaque collaborateur commence par héberge sur son ordinateur une copie
+du dépôt central.
 
 #+BEGIN_SRC sh
 git clone adresse_du_depot nom_local
@@ -54,10 +65,12 @@ astuce: Voir la 'Note à propos des avances rapides' dans 'git push --help' pour
 $
 #+END_EXAMPLE
 
+* La gestion des conflits
 ~Git~   offre    différentes   possibilités   pour    résoudre   cette
 situation.  Celle  présentée  ci-dessous   offre  l'avantage  de  nous
 familiariser avec le logiciel.
 
+** La stratégie à la ~fetch~ ~merge~
 La  commande   ~git  fetch~  permet   de  récupérer  le   nouvel  état
 d'avancement  du  dépôt  et  le mettre  dans  un  emplacement  virtuel
 ~origin/master~ sans écraser le travail effectué par le collaborateur.
@@ -93,8 +106,8 @@ seront clairement délimités par ~Git~ grâce à des marqueurs clairs.
 La version
 locale
 =======
-La version contenue dans
-le dépôt central
+La version
+du dépôt central
 >>>>>>> origin/master
 #+END_EXAMPLE
 
@@ -114,8 +127,22 @@ $ git commit -m "Merge de conflits avec la version du dépôt central"
 $ git push
 #+END_SRC
 
+** ~Git~, un logiciel aux possibilités larges
+~Git~ était au départ un système de fichier optimisé qui a évolué vers
+un  système de  gestion  de  version centralisé.  Cette  aspect de  sa
+conception lui donne une grande flexibilité.
 
-Illustrations tirée depuis [[https://www.atlassian.com/git/tutorials/comparing-workflows][ce site]]
+La gestion  des conflits  comme nous avons  vu précédemment  peut être
+conduite selon plusieurs stratégies. [[alarebase.org][À la rebase]] par exemple.
+
+Il existe néanmoins une autre  stratégie qui est considéré aujourd'hui
+comme une spécificité grâce à  laquelle ~Git~ surpasse ses concurrents
+dans le domaine de la gestion centralisée du travail collaboratif, les
+branches.
+
+C'est cette spécificité que nous  souhaitons exploiter de manière plus
+poussée et qui  donnera lieu à de nouveaux documents  dans le cadre de
+ce projet de formalisation d'un workflow.
 
 * Autres liens
 - http://documentup.com/skwp/git-workflows-book
@@ -125,3 +152,6 @@ Illustrations tirée depuis [[https://www.atlassian.com/git/tutorials/comparing-
 - https://sandofsky.com/blog/git-workflow.html
 - https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
 - http://nvie.com/posts/a-successful-git-branching-model/
+
+* Notes
+Illustrations tirée depuis [[https://www.atlassian.com/git/tutorials/comparing-workflows][ce site]]
