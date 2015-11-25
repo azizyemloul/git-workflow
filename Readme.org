@@ -244,6 +244,5 @@ $ git push
 - https://sandofsky.com/blog/git-workflow.html
 - https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
 - http://nvie.com/posts/a-successful-git-branching-model/
-
 * Notes
 Illustrations tirée depuis [[https://www.atlassian.com/git/tutorials/comparing-workflows][ce site]]

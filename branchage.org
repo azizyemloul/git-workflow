@@ -1,0 +1,41 @@
+* Créer une branche
+#+BEGIN_SRC sh
+git branch nom_de_branch
+#+END_SRC
+* Se déplacer dans les branches
+#+BEGIN_SRC sh
+git checkout nom_de_branch
+# créer et se placer dans la branche
+git checkout -b nom_de_branch
+#+END_SRC
+* Lister les branches
+#+BEGIN_SRC sh
+git branch
+#+END_SRC
+* Lister les branches remotes
+#+BEGIN_SRC sh
+git branch -r
+#+END_SRC
+* Rendre une branche publique
+#+BEGIN_SRC sh
+git push origin nom_de_branch
+#+END_SRC
+* Traker une branche fetchée
+#+BEGIN_SRC sh
+git branch --track nom origin/nom
+#+END_SRC
+* Effacer une branche sur le serveur
+#+BEGIN_SRC sh
+git push origin :nom_branche_a_supprimer
+#+END_SRC
+* Effacer les branches en local
+La gestion  des branches  a un  aspect problématique  dans le  sens où
+celles-ci  ne  sont  pas  effacées  sur les  espaces  de  travail  des
+collaborateurs même si elles le sont sur le dépôt central.
+
+Cela implique de demander aux collaborateurs d'exécuter la commande en
+local.
+
+#+BEGIN_SRC sh
+git branch -r -d origin/nom_branche_a_supprimer
+#+END_SRC

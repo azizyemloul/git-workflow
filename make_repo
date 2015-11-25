@@ -1,0 +1,40 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ] ; then    # On s'assure qu'un seul dépôt est demandé et que le nom ne comporte pas d'espaces
+    echo "Cette commande ne prend qu'un seul paramètre: le nom du dépôt à créer.
+Assurez vous de ne pas mettre d'espaces dans le nom"
+else
+
+    LDIR_NAME="$1"
+    REPO_NAME="$local_dir_name.git"
+
+    # igpro est un alias défini dans ~/.ssh/config
+    ssh -t igpro bash -c "'
+sudo mkdir /opt/git/$REPO_NAME
+cd /opt/git/$REPO_NAME
+sudo git --bare init
+cd ..
+sudo chown -R git.git $REPO_NAME
+'"
+
+    cd ~/Git-Repos
+    mkdir $LDIR_NAME
+    cd $LDIR_NAME
+    git init
+    git remote add origin git@www.igpro-online.net:~/$REPO_NAME
+
+    echo "All is done. Happy coding"
+fi
+
+
+
+#     LDIR_NAME="$1"
+#     REPO_NAME="$local_dir_name.git"
+#     working_dir="$(pwd)"
+#     if [ -d "$1" ]
+#        echo "Vous avez déjà un dossier portant le même nom dans votre installation locale"
+#     fi
+#     fi
+
+
+#     fi

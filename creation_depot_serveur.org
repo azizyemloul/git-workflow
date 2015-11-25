@@ -1,0 +1,5 @@
+* Mise en place d'un dépôt sur le serveur
+#+BEGIN_SRC sh
+mkdir $DIR && cd $DIR
+git --bare init
+#+END_SRC
