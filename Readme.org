@@ -9,6 +9,67 @@
 #+OPTIONS:   html5-fancy:t html-postamble:nil html-preamble:nil
 #+OPTIONS:   timestamp:nil author:nil creator:nil email:nil c:t e:t inline:t
 #+TITLE:
+
+Git  s'impose comme  une très  bonne  solution de  gestion du  travail
+collaboratif autour de projets de développement informatique.
+
+Ce mémo introduira les idées de base du fonctionnement du logiciel.
+
+En développement actif, Git  propose des fonctionnalités étendues sans
+cesse  et  qui peuvent  convenir  à  un  grand  nombre de  schémas  de
+collaboration.
+* Scénario du dépôt commun
+Soit trois collaborateurs partageant un même dépôt.
+Chacun a sur sa station une copie du projet.
+
+#+BEGIN_SRC sh
+git clone adresse_du_depot nom_local
+#+END_SRC
+
+#+BEGIN_HTML
+<img src="./img/collab0.png" width=200 height=200 />
+#+END_HTML
+
+Les changements qu'apporte le premier collaborateur à sa copie du
+projet peuvent être envoyés sur le dépôt. On parle d'un ~push~.
+
+Le ~push~ aura pour effet de changer l'état du dépôt. Les autres
+collaborateurs peuvent toutefois continuer à travailler sur leurs
+copies mais leurs ~push~ seront refusés car ils se basent sur un
+version dépassée du dépôt.
+
+#+BEGIN_HTML
+<img src="./img/mary_failed_push.png" width=200 height=200 />
+#+END_HTML
+
+Git propose plusieurs manières de résoudre cette situation. Nous
+allons en examiner une.
+
+* Les branches
+Par défaut, Git crée un branche ~master~ et offre la possibilité d'en
+créer d'autres.
+
+Travailler   sur  un   branche   n'affecte  pas   le  master.   Chaque
+collaborateur peut  par exemple en créer  une à son nom  et développer
+dessus  sans être  affecté par  les ajouts  de ses  collaborateurs qui
+auront lieu sur d'autres branches réservées.
+
+* Avancement du projet
+Si on étend le schéma des branches, on peut se retrouver avec un petit
+tronc ~master~ à partir duquel partent dans tous les sens des branches
+plus ou moins longues.
+
+#+BEGIN_EXAMPLE
+				A
+		  C	      _/
+		D  \_	    _/
+	         \_  \_ M _/
+		   \_  \_/
+		     \_ _
+		       \_
+			_
+			_
+#+END_EXAMPLE
 * Objectif
 Formaliser   le   fonctionnement   d'une  équipe   de   collaborateurs
 travaillant sur un projet de développement.
@@ -44,7 +105,7 @@ d'un schéma de  fonctionnement de base permettra  de l'exploiter avant
 de le maîtriser.
 
 * Le dépôt
-Chaque collaborateur commence par héberge sur son ordinateur une copie
+Chaque collaborateur commence par héberger sur son ordinateur une copie
 du dépôt central.
 
 #+BEGIN_SRC sh
@@ -245,4 +306,4 @@ $ git push
 - https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
 - http://nvie.com/posts/a-successful-git-branching-model/
 * Notes
-Illustrations tirée depuis [[https://www.atlassian.com/git/tutorials/comparing-workflows][ce site]]
+Illustrations tirées depuis [[https://www.atlassian.com/git/tutorials/comparing-workflows][ce site]]
