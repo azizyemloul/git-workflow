@@ -33,6 +33,10 @@ git clone adresse_du_depot nom_local
 Les changements qu'apporte le premier collaborateur à sa copie du
 projet peuvent être envoyés sur le dépôt. On parle d'un ~push~.
 
+#+BEGIN_HTML
+<img src="./img/bob_push.png" width=200 height=200 />
+#+END_HTML
+
 Le ~push~ aura pour effet de changer l'état du dépôt. Les autres
 collaborateurs peuvent toutefois continuer à travailler sur leurs
 copies mais leurs ~push~ seront refusés car ils se basent sur un
